@@ -15,7 +15,7 @@
 </template>
 <script>
 import { products } from "../temp-data";
-import NotFoundPage from "./NotFoundPage.vue"
+import NotFoundPage from "./NotFoundPage.vue";
 
 // const product = () => {
 //   return products.find(
@@ -24,7 +24,7 @@ import NotFoundPage from "./NotFoundPage.vue"
 // };
 export default {
   name: "ProductDetailPage",
-  components: {NotFoundPage},
+  components: { NotFoundPage },
   data() {
     return {
       product: products.find(
