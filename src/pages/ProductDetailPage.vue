@@ -6,7 +6,7 @@
     <div class="product-details">
       <h1>{{ product.name }}</h1>
       <h3 class="price">{{ product.price }}</h3>
-      <button class="add-to-cart">Add to cart</button>
+      <button @click="addToCart" class="add-to-cart">Add to cart</button>
     </div>
   </div>
   <div v-if="!product">
@@ -24,12 +24,18 @@ import axios from "axios";
 // };
 export default {
   name: "ProductDetailPage",
-  components: { NotFoundPage },
   data() {
     return {
       product: {},
     };
   },
+  methods: {
+    async addToCart(){
+      await axios.post('/api/users/12345/cart',{ id: this.$route.params.productId });
+      alert('Sucessfull added item to cart!')
+    }
+  },
+  components: { NotFoundPage },
   async created(){
     const response = await axios.get(`/api/products/${this.$route.params.productId}`);
     const product = response.data;
